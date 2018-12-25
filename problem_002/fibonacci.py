@@ -5,3 +5,16 @@ By starting with 1 and 2, the first 10 terms will be:
 By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 find the sum of the even-valued terms.
 '''
+
+def fib_generator(n):
+	a, b = 1, 1
+
+	while b <= n:
+		a, b = b, a + b
+		yield a
+
+def calculate(n):
+	return sum(i for i in fib_generator(n) if not i % 2)
+
+if __name__ == "__main__":
+	print(calculate(4000000))
